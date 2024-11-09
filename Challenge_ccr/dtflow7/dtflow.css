@@ -1,0 +1,10 @@
+/* ... (seu CSS existente) */
+
+.message.audio {
+    display: flex;
+    align-items: center;
+  }
+  
+  .message.audio audio {
+    width: 200px;
+  }

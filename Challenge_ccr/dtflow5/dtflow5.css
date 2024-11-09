@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #222; /* Cor de fundo escura */
+    color: #fff; /* Cor da fonte clara */
+  }
+  
+  .container {
+    width: 100%;
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 25%;
+    background-color: #333;
+    padding: 20px;
+  }
+  
+  .chat {
+    flex: 1;
+    padding: 20px;
+    background-color: #111;
+  }
+  
+  /* Estilos para outros elementos como botões, mensagens, etc. */
+  .message {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .message.user {
+    justify-content: flex-end;
+  }
+  
+  .message.bot {
+    justify-content: flex-start;
+  }
+  
+  .text {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 70%;
+  }
+  
+  /* Outros estilos para personalizar a aparência da sua aplicação */
