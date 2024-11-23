@@ -1,0 +1,112 @@
+<!-- Estrutura principal do formulário de login/cadastro -->
+<div class="container">
+    <!-- Seção de login -->
+    <div class="login-section">
+        <h1>BEM-VINDO<br>DE VOLTA!</h1>
+        
+        <!-- Botões de login social -->
+        <button class="social-btn google">
+            <img src="google-icon.png" alt="Google">
+            Fazer login com o Google
+        </button>
+        
+        <button class="social-btn facebook">
+            <img src="facebook-icon.png" alt="Facebook">
+            Fazer login com o Facebook
+        </button>
+        
+        <button class="social-btn twitter">
+            <img src="twitter-icon.png" alt="Twitter">
+            Fazer login com o Twitter
+        </button>
+
+        <!-- Divisor -->
+        <div class="divider">
+            <span>OU</span>
+        </div>
+
+        <!-- Formulário de login tradicional -->
+        <form id="loginForm">
+            <input type="text" placeholder="E-mail ou nome de usuario" required>
+            <input type="password" placeholder="Senha" required>
+            <a href="#" class="forgot-password">Esqueceu sua senha?<br>Clique aqui.</a>
+        </form>
+    </div>
+
+    <!-- Seção de cadastro -->
+    <div class="register-section">
+        <h2>CADASTRO<br>SMART HOME</h2>
+        
+        <form id="registerForm">
+            <input type="text" placeholder="Nome completo" required>
+            <input type="text" placeholder="Celular ou e-mail" required>
+            <input type="password" placeholder="Senha" required>
+
+            <!-- Data de nascimento -->
+            <div class="birth-date">
+                <label>Data de nascimento:</label>
+                <div class="date-selects">
+                    <select id="day"></select>
+                    <select id="month"></select>
+                    <select id="year"></select>
+                </div>
+            </div>
+
+            <!-- Seleção de gênero -->
+            <div class="gender">
+                <label>Gênero:</label>
+                <div class="gender-options">
+                    <label><input type="radio" name="gender" value="F"> F</label>
+                    <label><input type="radio" name="gender" value="M"> M</label>
+                    <label><input type="radio" name="gender" value="outro"> Outro</label>
+                </div>
+            </div>
+
+            <button type="submit" class="register-btn">CADASTRE-SE</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Preenche os selects de data
+    window.onload = function() {
+        const daySelect = document.getElementById('day');
+        const monthSelect = document.getElementById('month');
+        const yearSelect = document.getElementById('year');
+
+        // Preenche dias
+        for(let i = 1; i <= 31; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            daySelect.appendChild(option);
+        }
+
+        // Preenche meses
+        const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        meses.forEach((mes, index) => {
+            const option = document.createElement('option');
+            option.value = index + 1;
+            option.text = mes;
+            monthSelect.appendChild(option);
+        });
+
+        // Preenche anos
+        const anoAtual = new Date().getFullYear();
+        for(let i = anoAtual; i >= 1900; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            yearSelect.appendChild(option);
+        }
+    }
+
+    // Validação do formulário
+    document.getElementById('registerForm').onsubmit = function(e) {
+        e.preventDefault();
+        // Aqui vai a lógica de validação e envio do formulário
+        console.log('Formulário enviado');
+    }
+</script>
+

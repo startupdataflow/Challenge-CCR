@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home - Agenda Econômica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <h1 class="logo">SMART HOME</h1>
+            
+            <ul class="menu">
+                <li><a href="#"><span class="icon-dashboard"></span>Dashboard</a></li>
+                <li class="active"><a href="#"><span class="icon-calendar"></span>Agenda</a></li>
+                <li><a href="#"><span class="icon-chart"></span>Consumo</a></li>
+                <li><a href="#"><span class="icon-settings"></span>Configurações</a></li>
+                <li><a href="#"><span class="icon-user"></span>Apresentação</a></li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+            <!-- Barra superior -->
+            <header class="top-bar">
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Buscar por dispositivo ou palavra chave" class="search-input">
+                    <button class="search-btn">Buscar</button>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="icon-btn help-btn">?</button>
+                    <button class="icon-btn notif-btn">🔔</button>
+                    <div class="user-profile">
+                        <img src="profile.jpg" alt="Perfil">
+                        <span>Elon</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Seção da agenda -->
+            <section class="agenda-section">
+                <h2>AGENDA ECÔNOMICA</h2>
+                <h3>Dispositivos</h3>
+                
+                <!-- Grid de dispositivos -->
+                <div class="devices-grid" id="devicesGrid">
+                    <!-- Cards serão inseridos via JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Dados dos dispositivos e seus horários
+        const devices = [
+            {
+                name: 'Smart TV',
+                icon: '📺',
+                time: '23:10',
+                active: true
+            },
+            {
+                name: 'Speaker',
+                icon: '🔊',
+                time: '23:10',
+                active: true
+            },
+            {
+                name: 'Wifi',
+                icon: '📡',
+                time: '23:10',
+                active: true
+            },
+            {
+                name: 'Aquecedor',
+                icon: '🌡️',
+                time: '06:10',
+                active: true
+            },
+            {
+                name: 'Luzes',
+                icon: '💡',
+                time: '22:00',
+                active: true
+            },
+            {
+                name: 'Carregador',
+                icon: '🔌',
+                time: '22:00',
+                active: true
+            }
+        ];
+
+        // Dias da semana abreviados
+        const weekDays = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
+
+        // Função para criar cards dos dispositivos
+        function createDeviceCards() {
+            const grid = document.getElementById('devicesGrid');
+            
+            devices.forEach(device => {
+                const card = document.createElement('div');
+                card.className = 'device-card';
+                
+                // Estrutura do card
+                card.innerHTML = `
+                    <div class="device-icon">${device.icon}</div>
+                    <div class="device-info">
+                        <h4>${device.name}</h4>
+                        <div class="time-display">
+                            <span class="clock-icon">⏰</span>
+                            <span class="time">${device.time}</span>
+                        </div>
+                        <div class="weekdays">
+                            ${weekDays.map(day => `<span class="day">${day}</span>`).join('')}
+                        </div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" ${device.active ? 'checked' : ''}>
+                        <span class="slider"></span>
+                    </label>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Inicializar a página quando carregar
+        document.addEventListener('DOMContentLoaded', createDeviceCards);
+    </script>
+</body>
+</html>

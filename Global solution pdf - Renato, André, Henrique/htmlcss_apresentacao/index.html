@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Dashboard - Equipe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Container principal com gradiente de fundo -->
+    <div class="container">
+        <!-- Cabeçalho com título e descrição -->
+        <header class="dashboard-header">
+            <h1>Smart Home Dashboard</h1>
+            <p class="description">
+                Nosso projeto para a Global Solutions é uma plataforma inovadora que 
+                otimiza o consumo de energia em residências. Com ela, é possível:
+            </p>
+            <ul class="features">
+                <li>Controlar dispositivos e agentar horários de uso</li>
+                <li>Monitorar o consumo por hora, data e dispositivo</li>
+                <li>Visualizar e interpretar dados em um dashboard amigável, simplificando 
+                    o controle e a gestão sustentável</li>
+            </ul>
+            <p class="note">
+                Unindo tecnologia e responsabilidade ambiental, nosso objetivo é educar
+                e auxiliar a minimizar impactos ao meio ambiente.
+            </p>
+        </header>
+
+        <!-- Grid de cards dos membros da equipe -->
+        <div class="team-grid" id="teamGrid">
+            <!-- Cards serão inseridos via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Dados dos membros da equipe
+        const teamMembers = [
+            {
+                name: 'André Ramalho Ward',
+                id: '550620',
+                photo: '/placeholder.svg?height=100&width=100',
+                links: [
+                    { url: 'github.com/wardwar', label: 'GitHub' },
+                    { url: 'linkedin.com/in/wardwar', label: 'LinkedIn' }
+                ]
+            },
+            {
+                name: 'Henrique Paes Villa',
+                id: '550525',
+                photo: '/placeholder.svg?height=100&width=100',
+                links: [
+                    { url: 'github.com/hpvilla', label: 'GitHub' },
+                    { url: 'linkedin.com/in/hpvilla', label: 'LinkedIn' }
+                ]
+            },
+            {
+                name: 'Renato de Angelo',
+                id: '550555',
+                photo: '/placeholder.svg?height=100&width=100',
+                links: [
+                    { url: 'github.com/rdeangelo', label: 'GitHub' },
+                    { url: 'linkedin.com/in/rdeangelo', label: 'LinkedIn' }
+                ]
+            }
+        ];
+
+        // Função para criar cards dos membros
+        function createTeamCards() {
+            const grid = document.getElementById('teamGrid');
+            
+            teamMembers.forEach(member => {
+                // Criar card container
+                const card = document.createElement('div');
+                card.className = 'team-card';
+
+                // Adicionar foto e informações
+                card.innerHTML = `
+                    <img src="${member.photo}" alt="${member.name}" class="profile-photo">
+                    <div class="member-info">
+                        <h2>${member.name}</h2>
+                        <p class="member-id">RM: ${member.id}</p>
+                        <div class="social-links">
+                            ${member.links.map(link => `
+                                <a href="https://${link.url}" target="_blank" rel="noopener">
+                                    ${link.label}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Inicializar página quando carregar
+        document.addEventListener('DOMContentLoaded', createTeamCards);
+    </script>
+</body>
+</html>
+

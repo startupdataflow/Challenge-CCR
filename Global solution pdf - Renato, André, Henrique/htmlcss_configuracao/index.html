@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home - Configurações</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Estrutura principal -->
+    <div class="container">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <h1 class="logo">SMART HOME</h1>
+            
+            <ul class="menu">
+                <li><a href="#"><span class="icon-dashboard"></span>Dashboard</a></li>
+                <li><a href="#"><span class="icon-calendar"></span>Agenda</a></li>
+                <li><a href="#"><span class="icon-chart"></span>Consumo</a></li>
+                <li class="active"><a href="#"><span class="icon-settings"></span>Configurações</a></li>
+                <li><a href="#"><span class="icon-user"></span>Apresentação</a></li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+            <!-- Barra superior -->
+            <header class="top-bar">
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Buscar por dispositivo ou palavra chave" class="search-input">
+                    <button class="search-btn">Buscar</button>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="icon-btn help-btn">?</button>
+                    <button class="icon-btn notif-btn">🔔</button>
+                    <div class="user-profile">
+                        <img src="profile.jpg" alt="Perfil">
+                        <span>Elon</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Seção de configurações -->
+            <section class="settings-content">
+                <h2>CONFIGURAÇÕES</h2>
+
+                <!-- Configurações de data e hora -->
+                <div class="settings-card">
+                    <h3>CONFIGURAÇÕES DE DATA E HORA</h3>
+                    <p class="current-datetime">23:10, quinta-feira, 21 de novembro de 2024.</p>
+                    
+                    <div class="timezone-setting">
+                        <label class="toggle">
+                            <input type="checkbox" id="autoTimezone">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span>Definir fuso horário automaticamente</span>
+                    </div>
+
+                    <div class="manual-timezone">
+                        <p>Definir fuso horário manualmente</p>
+                        <button class="change-btn">Alterar</button>
+                    </div>
+                </div>
+
+                <!-- Configurações de aparência -->
+                <div class="settings-card">
+                    <h3>APARÊNCIA</h3>
+                    <div class="theme-options">
+                        <div class="theme-card" data-theme="sunset">
+                            <div class="theme-preview sunset"></div>
+                            <span>Por do sol</span>
+                        </div>
+                        <div class="theme-card" data-theme="dark">
+                            <div class="theme-preview dark"></div>
+                            <span>Dark</span>
+                        </div>
+                        <div class="theme-card" data-theme="calm">
+                            <div class="theme-preview calm"></div>
+                            <span>mar calmo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configurações de idioma -->
+                <div class="settings-card">
+                    <h3>IDIOMA</h3>
+                    <div class="language-grid">
+                        <button class="lang-btn active">PORTUGUÊS</button>
+                        <button class="lang-btn">ALEMÃO</button>
+                        <button class="lang-btn">INGLÊS</button>
+                        <button class="lang-btn">JAPONES</button>
+                        <button class="lang-btn">ESPANHOL</button>
+                        <button class="lang-btn">CHINÊS</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Manipulação do tema
+        document.querySelectorAll('.theme-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove seleção anterior
+                document.querySelectorAll('.theme-card').forEach(c => 
+                    c.classList.remove('selected'));
+                
+                // Aplica nova seleção
+                card.classList.add('selected');
+                
+                // Aplica o tema
+                document.body.setAttribute('data-theme', card.dataset.theme);
+            });
+        });
+
+        // Toggle do fuso horário automático
+        const autoTimezone = document.getElementById('autoTimezone');
+        const manualSection = document.querySelector('.manual-timezone');
+
+        autoTimezone.addEventListener('change', () => {
+            manualSection.style.opacity = autoTimezone.checked ? '0.5' : '1';
+            manualSection.style.pointerEvents = autoTimezone.checked ? 'none' : 'auto';
+        });
+
+        // Seleção de idioma
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => 
+                    b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
